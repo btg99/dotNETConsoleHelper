@@ -35,7 +35,7 @@ Password: ************
 The GetMenuSelection function allows the user to choose from a list of options displayed in a single line. The currently selected option is highlighted by being \[surrounded in brackets\]. The left and right arrow keys are used for navigating between the options and the enter key is used to make the selection.
 ```
 Console.WriteLine(
-	"You selected option " +
+	"You selected " +
 	ConsoleHelper.GetMenuSelectionString(
 		"Option 1",
 		"Option 2",
