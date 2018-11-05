@@ -1,13 +1,13 @@
 # dotNETConsoleHelper
 A library of c# functions designed to make creating games or other applications using the C# console features easier.
 
-The GetInput function prefixes the input with a label and will ask the user to input a string. If the string doesn't match all the conditions passed to the function, it will print the failResponse string and repeat the process until they provide a valid input. The conditions are passed in the form of functions that follow the form: ```bool func(string s)``` where they return a bool and take a single string as input. This can be nicely accomplished using lambda expressions:
+The GetInput function prefixes the input with a label and will ask the user to input a string. If the string doesn't match all the conditions passed to the function, it will print the failResponse string and repeat the process until they provide a valid input. The conditions are passed as functions that follow the form: ```bool func(string s)``` where they return a bool and take a single string as input. This can be nicely accomplished using lambda expressions:
 ```
 string username = ConsoleHelper.GetInput(
 	"Username: ",
 	"Invalid username, please try again!",
 	u => u.Length > 6,
-	u => u.Length > 20);
+	u => u.Length < 20);
 ```
 ```
 Username: test
@@ -17,7 +17,7 @@ Invalid username, please try again!
 Username: test_username
 
 ```
-The getMaskedInput function is similar, but either doesn't print any characters to the screen as the user types their input or displays the passed mask character instead:
+The GetMaskedInput function is similar, but masks over the typed characters. By default it simply prints nothing as the user types, but it takes an optional mask character as a parameter.
 ```
 string password = ConsoleHelper.GetMaskedInput(
 	"Password: ",
